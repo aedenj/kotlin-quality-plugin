@@ -4,11 +4,6 @@
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
 
 # Package Files #
 *.jar
@@ -22,3 +17,30 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Ignore Gradle project-specific cache directory
+bin/
+build/
+.gradle/
+.gradletasknamecache
+gradle-app.setting
+!gradle-wrapper.jar
+gradle-cache/
+
+# Ignore Gradle build output directory
+build
+
+# IntelliJ
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+data/
+
+# vim
+*.swp
+
+# OS X
+.DS_Store
