@@ -9,7 +9,7 @@ import org.gradle.api.Plugin
 /**
  * A simple 'hello world' plugin.
  */
-class KotlinQualityPluginPlugin: Plugin<Project> {
+class KotlinQualityPlugin: Plugin<Project> {
     override fun apply(project: Project) {
         // Register a task
         project.tasks.register("greeting") { task ->

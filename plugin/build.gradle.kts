@@ -11,6 +11,8 @@ plugins {
 
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.9.10"
+
+    id("com.gradle.plugin-publish") version "1.2.1"
 }
 
 repositories {
@@ -29,7 +31,7 @@ gradlePlugin {
     // Define the plugin
     val greeting by plugins.creating {
         id = "kotlin.quality.plugin.greeting"
-        implementationClass = "kotlin.quality.plugin.KotlinQualityPluginPlugin"
+        implementationClass = "kotlin.quality.plugin.KotlinQualityPlugin"
     }
 }
 

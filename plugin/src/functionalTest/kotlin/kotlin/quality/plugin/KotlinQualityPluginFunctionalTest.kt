@@ -12,7 +12,7 @@ import org.junit.jupiter.api.io.TempDir
 /**
  * A simple functional test for the 'kotlin.quality.plugin.greeting' plugin.
  */
-class KotlinQualityPluginPluginFunctionalTest {
+class KotlinQualityPluginFunctionalTest {
 
     @field:TempDir
     lateinit var projectDir: File
