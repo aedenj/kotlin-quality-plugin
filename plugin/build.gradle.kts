@@ -15,6 +15,24 @@ plugins {
     id("com.gradle.plugin-publish") version "1.2.1"
 }
 
+description = "Static code analysis for Kotlin projects."
+group = "io.github.aedenj.gradle.plugin.quality"
+version = "1.0"
+
+gradlePlugin {
+    website.set("https://github.com/aedenj/kotlin-quality-plugin")
+    vcsUrl.set("https://github.com/aedenj/kotlin-quality-plugin")
+    plugins {
+        create("kotlin-quality-plugin") {
+            id = project.group.toString()
+            implementationClass = "io.github.aedenj.gradle.plugin.quality.QualityPlugin"
+            displayName = project.description
+            description = project.description
+            tags.set(listOf("kotlin", "quality", "ktlint", "detekt", "kover"))
+        }
+    }
+}
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
