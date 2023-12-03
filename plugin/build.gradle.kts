@@ -64,8 +64,12 @@ dependencies {
         libs.ktlint.plugin
     ).forEach { implementation(it) }
 
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    listOf(
+        "org.jetbrains.kotlin:kotlin-test-junit5",
+        libs.assertj.core
+    ).forEach { testImplementation(it) }
+
 }
 
 // Add a source set for the functional test suite

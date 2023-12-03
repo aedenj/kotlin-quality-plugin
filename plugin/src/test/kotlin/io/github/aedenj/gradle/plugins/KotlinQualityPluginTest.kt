@@ -3,20 +3,16 @@
  */
 package io.github.aedenj.gradle.plugins
 
+import org.assertj.core.api.Assertions.assertThat
 import org.gradle.testfixtures.ProjectBuilder
 import kotlin.test.Test
-import kotlin.test.assertNotNull
 
-/**
- * A simple unit test for the 'kotlin.quality.plugin.greeting' plugin.
- */
 class KotlinQualityPluginTest {
-    @Test fun `plugin registers task`() {
-        // Create a test project and apply the plugin
+    @Test fun `contains required plugins`() {
         val project = ProjectBuilder.builder().build()
-        project.plugins.apply("io.github.aedenj.gradle.plugins.kotlin-quality")
 
-        // Verify the result
-        assertNotNull(project.tasks.findByName("greeting"))
+        assertThat(project.plugins).isEmpty()
+        project.plugins.apply("io.github.aedenj.gradle.plugins.kotlin-quality")
+        assertThat(project.pluginManager.hasPlugin("org.jlleitschuh.gradle.ktlint")).isTrue()
     }
 }

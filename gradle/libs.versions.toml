@@ -1,6 +1,9 @@
 [versions]
-ktLintPlugin = "11.6.1"
+ktLintPlugin = "12.0.2"
+assertjVersion = "3.24.2"
 
 [libraries]
 ktlint-plugin = { group = "org.jlleitschuh.gradle.ktlint", name = "org.jlleitschuh.gradle.ktlint.gradle.plugin", version.ref = "ktLintPlugin" }
+assertj-core = { group = "org.assertj", name = "assertj-core", version.ref = "assertjVersion" }
+
 
