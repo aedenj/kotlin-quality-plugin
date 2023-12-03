@@ -29,6 +29,7 @@ gradle-cache/
 
 # Ignore Gradle build output directory
 build
+local-plugin-repository/
 
 # IntelliJ
 out/

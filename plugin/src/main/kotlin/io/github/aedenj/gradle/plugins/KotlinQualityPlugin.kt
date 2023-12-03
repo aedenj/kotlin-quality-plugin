@@ -3,16 +3,16 @@
  */
 package io.github.aedenj.gradle.plugins
 
+import org.gradle.kotlin.dsl.apply
+
 import org.gradle.api.Project
 import org.gradle.api.Plugin
+import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 
 class KotlinQualityPlugin: Plugin<Project> {
     override fun apply(project: Project) {
-        // Register a task
-        project.tasks.register("greeting") { task ->
-            task.doLast {
-                println("Hello from plugin 'io.github.aedenj.gradle.plugins.kotlin-quality.greeting'")
-            }
+        with(project) {
+           apply<KtlintPlugin>()
         }
     }
 }

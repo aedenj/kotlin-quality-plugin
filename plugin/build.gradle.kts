@@ -8,6 +8,8 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
  */
 
 plugins {
+    `kotlin-dsl`
+
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     // https://docs.gradle.org/current/userguide/java_gradle_plugin.html
     `java-gradle-plugin`
@@ -17,6 +19,9 @@ plugins {
 
     // https://plugins.gradle.org/plugin/com.adarshr.test-logger
     id("com.adarshr.test-logger") version "4.0.0"
+
+    // https://github.com/JLLeitschuh/ktlint-gradle
+    id("org.jlleitschuh.gradle.ktlint") version "12.0.2"
 
     // https://plugins.gradle.org/docs/publish-plugin
     id("com.gradle.plugin-publish") version "1.2.1"
@@ -41,14 +46,25 @@ gradlePlugin {
 }
 
 repositories {
-    // Use Maven Central for resolving dependencies.
+    gradlePluginPortal()
     mavenCentral()
 }
 
-dependencies {
-    // Use the Kotlin JUnit 5 integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+publishing {
+    repositories {
+        maven {
+            name = "localPluginRepository"
+            url = uri("../local-plugin-repository")
+        }
+    }
+}
 
+dependencies {
+    listOf(
+        libs.ktlint.plugin
+    ).forEach { implementation(it) }
+
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
@@ -69,6 +85,7 @@ val functionalTest by tasks.registering(Test::class) {
 tasks {
     test {
         useJUnitPlatform()
+        jvmArgs = listOf("-Duser.language=en")
 
         testlogger {
             theme = ThemeType.MOCHA
