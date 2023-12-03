@@ -5,8 +5,10 @@ package io.github.aedenj.gradle.plugins
 
 import org.assertj.core.api.Assertions.assertThat
 import org.gradle.testfixtures.ProjectBuilder
+import org.junit.jupiter.api.DisplayName
 import kotlin.test.Test
 
+@DisplayName("kotlin quality plugin")
 class KotlinQualityPluginTest {
     @Test fun `contains required plugins`() {
         val project = ProjectBuilder.builder().build()
