@@ -1,0 +1,6 @@
+[versions]
+ktLintPlugin = "11.6.1"
+
+[libraries]
+ktlint-plugin = { group = "org.jlleitschuh.gradle.ktlint", name = "org.jlleitschuh.gradle.ktlint.gradle.plugin", version.ref = "ktLintPlugin" }
+
