@@ -61,29 +61,16 @@ publishing {
 
 dependencies {
     listOf(
-        libs.ktlint.plugin
+        libs.ktlint.plugin,
     ).forEach { implementation(it) }
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     listOf(
         "org.jetbrains.kotlin:kotlin-test-junit5",
-        libs.assertj.core
+        libs.junit5.params,
+        libs.assertj.core,
+        gradleTestKit(),
     ).forEach { testImplementation(it) }
-
-}
-
-// Add a source set for the functional test suite
-val functionalTestSourceSet = sourceSets.create("functionalTest")
-gradlePlugin.testSourceSets.add(functionalTestSourceSet)
-
-configurations["functionalTestImplementation"].extendsFrom(configurations["testImplementation"])
-configurations["functionalTestRuntimeOnly"].extendsFrom(configurations["testRuntimeOnly"])
-
-// Add a task to run the functional tests
-val functionalTest by tasks.registering(Test::class) {
-    testClassesDirs = functionalTestSourceSet.output.classesDirs
-    classpath = functionalTestSourceSet.runtimeClasspath
-    useJUnitPlatform()
 }
 
 tasks {
@@ -98,9 +85,5 @@ tasks {
             showFullStackTraces = false
             logLevel = LogLevel.QUIET
         }
-    }
-
-    check {
-        dependsOn(functionalTest)
     }
 }
