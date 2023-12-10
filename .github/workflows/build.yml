@@ -8,11 +8,17 @@ on:
       - "main"
 
 jobs:
+  validation:
+    name: "gradle wrapper validation"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gradle/wrapper-validation-action@v1
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup java
+      - name: "setup java"
         uses: actions/setup-java@v3
         with:
           distribution: "temurin"
