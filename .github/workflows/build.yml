@@ -8,13 +8,20 @@ on:
       - "main"
 
 jobs:
+  validation:
+    name: Gradle Wrapper Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v1
+
   build:
+    name: "Build"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
