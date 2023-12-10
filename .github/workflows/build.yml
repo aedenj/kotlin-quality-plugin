@@ -9,7 +9,7 @@ on:
 
 jobs:
   validation:
-    name: "Gradle Wrapper Validation"
+    name: Gradle Wrapper Validation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,6 +17,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Restore Gradle Caches
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches/modules-2
+            ~/.gradle/caches/files-2.1
+            ~/.gradle/caches/metadata-2.96
+          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/*.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-cache-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
