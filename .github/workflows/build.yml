@@ -53,16 +53,6 @@ jobs:
           distribution: "zulu"
           java-version: ${{ matrix.java_version }}
           cache: "gradle"
-      - name: Restore Gradle caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches/modules-2
-            ~/.gradle/caches/files-2.1
-            ~/.gradle/caches/metadata-2.96
-          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/*.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-cache-
       - name: Build
         run: ./gradlew build --no-daemon
       - name: Upload Test Results
@@ -71,3 +61,13 @@ jobs:
         with:
           name: test-results-${{ runner.os }}
           path: plugin/build/reports/tests/test/
+      - name: Upload Memory Dump
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: memory-dump-${{ runner.os }}
+          path: |
+            hs_err_pid*
+            replay_pid*
+            plugin/hs_err_pid*
+            plugin/replay_pid*
