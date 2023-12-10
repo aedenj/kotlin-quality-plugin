@@ -65,3 +65,9 @@ jobs:
             ${{ runner.os }}-gradle-cache-
       - name: Build
         run: ./gradlew build --no-daemon
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: test-results-${{ runner.os }}
+          path: plugin/build/reports/tests/test/
