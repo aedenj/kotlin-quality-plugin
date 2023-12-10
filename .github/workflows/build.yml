@@ -1,4 +1,4 @@
-name: "Build branch"
+name: "Build"
 on:
   pull_request:
     branches:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   validation:
-    name: "gradle wrapper validation"
+    name: "Gradle Wrapper Validation"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,8 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup java
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
