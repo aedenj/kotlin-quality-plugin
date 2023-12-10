@@ -29,7 +29,7 @@ jobs:
       version_matrix: ${{ steps.set-matrix.outputs.version_matrix }}
 
   build:
-    name: "Build Plugin"
+    name: "Build & Test"
     needs: build-jvm-matrix
     strategy:
       fail-fast: false
@@ -53,7 +53,7 @@ jobs:
           distribution: "zulu"
           java-version: ${{ matrix.java_version }}
           cache: "gradle"
-      - name: Build
+      - name: Build & Test
         run: ./gradlew build --no-daemon
       - name: Upload Test Results
         uses: actions/upload-artifact@v2
