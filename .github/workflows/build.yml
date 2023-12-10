@@ -29,7 +29,7 @@ jobs:
       version_matrix: ${{ steps.set-matrix.outputs.version_matrix }}
 
   build:
-    name: "Build"
+    name: "Build Plugin"
     needs: build-jvm-matrix
     strategy:
       fail-fast: false
@@ -50,8 +50,18 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
+          distribution: "zulu"
           java-version: ${{ matrix.java_version }}
           cache: "gradle"
+      - name: Restore Gradle caches
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches/modules-2
+            ~/.gradle/caches/files-2.1
+            ~/.gradle/caches/metadata-2.96
+          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/*.gradle.kts') }}-${{ hashFiles('**/gradle.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-cache-
       - name: Build
         run: ./gradlew build --no-daemon
