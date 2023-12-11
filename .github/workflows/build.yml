@@ -21,9 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: # https://michaelheap.com/dynamic-matrix-generation-github-actions/
       - id: set-matrix
-        name: Set Matrix
-        run: echo "version_matrix=$(curl https://endoflife.date/api/oracle-jdk.json | jq -c '[.[] | select(.extendedSupport > (now | strftime("%Y-%m-%d"))) | .cycle]' | sed 's/ //g')" >> $GITHUB_OUTPUT
-      - name: Verify Matrix
+        name: Setup Java Versions Matrix
+        run: echo "version_matrix=$(curl https://endoflife.date/api/oracle-jdk.json | jq -c '[.[] | select(.extendedSupport > (now | strftime("%Y-%m-%d"))) and .cycle < 21 | .cycle]' | sed 's/ //g')" >> $GITHUB_OUTPUT
+      - name: Verify Java Versions Matrix
         run: echo "The selected java versions are ${{ steps.set-matrix.outputs.version_matrix }}"
     outputs:
       version_matrix: ${{ steps.set-matrix.outputs.version_matrix }}

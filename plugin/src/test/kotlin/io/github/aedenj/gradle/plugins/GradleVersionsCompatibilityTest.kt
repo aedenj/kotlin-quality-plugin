@@ -17,7 +17,7 @@ class GradleVersionsCompatibilityTest {
     private val buildFile by lazy { projectDir.resolve("build.gradle") }
     private val settingsFile by lazy { projectDir.resolve("settings.gradle") }
 
-    @ValueSource(strings = ["7.6.2", "8.1", "8.2.1", "8.3", "8.4", "8.5"])
+    @ValueSource(strings = ["7.6.3", "8.1", "8.2.1", "8.3", "8.4", "8.5"])
     @ParameterizedTest(name = "then the task succeeds for version {0}")
     @DisplayName("when the build task is run")
     fun `test gradle version compatibility`(version: String) {
