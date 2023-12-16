@@ -12,7 +12,7 @@ jobs:
     name: Gradle Wrapper Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1
 
@@ -39,7 +39,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Configure Pagefile If Windows
         if: ${{ matrix.os  == 'windows-latest' }}
         uses: al-cheb/configure-pagefile-action@v1.3
@@ -56,13 +56,13 @@ jobs:
       - name: Build & Test
         run: ./gradlew build --no-daemon
       - name: Upload Test Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
         if: failure()
         with:
           name: test-results-${{ runner.os }}
           path: plugin/build/reports/tests/test/
       - name: Upload Memory Dump
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
         if: failure()
         with:
           name: memory-dump-${{ runner.os }}
