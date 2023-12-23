@@ -38,7 +38,7 @@ gradlePlugin {
         create("kotlin-quality-plugin") {
             id = project.group.toString()
             implementationClass = "io.github.aedenj.gradle.plugins.KotlinQualityPlugin"
-            displayName = project.description
+            displayName = "Kotlin Quality Plugin"
             description = project.description
             tags.set(listOf("kotlin", "quality", "ktlint", "detekt", "kover"))
         }
