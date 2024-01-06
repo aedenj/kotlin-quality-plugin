@@ -15,6 +15,11 @@ jobs:
     name: Gradle Wrapper Validation
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@56b90f209b02bf6d1deae490e9ef18b21a389cd4 # v1.1.0
@@ -23,6 +28,11 @@ jobs:
     name: "Setup JVM Matrix"
     runs-on: ubuntu-latest
     steps: # https://michaelheap.com/dynamic-matrix-generation-github-actions/
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - id: set-matrix
         name: Setup Java Versions Matrix
         run: echo "version_matrix=$(curl https://endoflife.date/api/oracle-jdk.json | jq -c '[.[] | select(.extendedSupport > (now | strftime("%Y-%m-%d")) and ((.cycle | tonumber) < 21)) | .cycle]' | sed 's/ //g')" >> $GITHUB_OUTPUT
@@ -41,6 +51,11 @@ jobs:
         java_version: ${{ fromJson(needs.build-jvm-matrix.outputs.version_matrix) }}
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          egress-policy: audit
+
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Configure Pagefile If Windows
