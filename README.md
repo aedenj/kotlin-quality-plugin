@@ -1,4 +1,4 @@
-# Kotlin Quality Gradle Plugin (Under Development)
+# Kotlin Quality Gradle Plugin (Alpha)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![Build](https://github.com/aedenj/kotlin-quality-plugin/actions/workflows/build.yml/badge.svg)](https://github.com/aedenj/kotlin-quality-plugin/actions/workflows/build.yml)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
@@ -10,10 +10,12 @@ workflow. The following quality plugins are applied:
 
  * [Ktlint Plugin](https://github.com/JLLeitschuh/ktlint-gradle/tree/main) - If you don't configure the plugin, 
    then defaults defined in the [KtlintExtension](https://github.com/JLLeitschuh/ktlint-gradle/blob/main/plugin/src/main/kotlin/org/jlleitschuh/gradle/ktlint/KtlintExtension.kt) object will be used. 
+ * [Kover](https://kotlin.github.io/kotlinx-kover/gradle-plugin/) - If you don't configure the plugin, then Kover's 
+   [defaults are applied](https://kotlin.github.io/kotlinx-kover/gradle-plugin/configuring#configuring-default-reports).
 
 Features:
 * Zero configuration by default: opinionated configs are applied to all quality plugins
-    - Default configuration files may be customized
+    - Default configuration may be customized
 * Complete console output for all quality plugins
 
 
