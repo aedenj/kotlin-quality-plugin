@@ -29,6 +29,6 @@ class KotlinQualityPluginTest {
     @Test
     @DisplayName("then kover gradle plugin is applied")
     fun `then kover gradle plugin is applied `() {
-        assertThat(project.pluginManager.hasPlugin("org.jlleitschuh.gradle.ktlint")).isTrue()
+        assertThat(project.pluginManager.hasPlugin("org.jetbrains.kotlinx.kover")).isTrue()
     }
 }

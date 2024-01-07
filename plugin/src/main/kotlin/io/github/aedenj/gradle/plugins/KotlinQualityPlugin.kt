@@ -1,5 +1,6 @@
 package io.github.aedenj.gradle.plugins
 
+import kotlinx.kover.gradle.plugin.KoverGradlePlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
@@ -15,6 +16,7 @@ class KotlinQualityPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         with(project) {
             apply<KtlintPlugin>()
+            apply<KoverGradlePlugin>()
         }
     }
 }
