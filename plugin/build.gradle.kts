@@ -62,6 +62,7 @@ publishing {
 dependencies {
     listOf(
         libs.ktlint.plugin,
+        libs.kover.plugin,
     ).forEach { implementation(it) }
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
