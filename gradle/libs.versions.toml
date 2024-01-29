@@ -1,6 +1,6 @@
 [versions]
 ktLintPlugin = "12.0.2"
-assertjVersion = "3.25.0"
+assertjVersion = "3.25.2"
 junit5Version = "5.10.1"
 
 [libraries]
