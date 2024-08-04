@@ -2,7 +2,7 @@
 ktLintPlugin = "12.0.2"
 koverPlugin = "0.7.5"
 assertjVersion = "3.25.0"
-junit5Version = "5.10.1"
+junit5Version = "5.10.2"
 
 [libraries]
 ktlint-plugin = { group = "org.jlleitschuh.gradle.ktlint", name = "org.jlleitschuh.gradle.ktlint.gradle.plugin", version.ref = "ktLintPlugin" }
