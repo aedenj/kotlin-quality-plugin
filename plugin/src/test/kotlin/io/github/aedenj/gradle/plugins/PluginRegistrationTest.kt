@@ -9,8 +9,8 @@ import org.junit.jupiter.api.TestInstance
 import kotlin.test.Test
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@DisplayName("given a gradle project when the kotlin quality plugin is applied")
-class KotlinQualityPluginTest {
+@DisplayName("given a project when applying the quality plugin")
+class PluginRegistrationTest {
     private lateinit var project: Project
 
     @BeforeAll
@@ -21,13 +21,13 @@ class KotlinQualityPluginTest {
     }
 
     @Test
-    @DisplayName("then ktlint gradle plugin is applied")
+    @DisplayName("then the ktlint gradle plugin is applied")
     fun `then ktlint gradle plugin is applied `() {
         assertThat(project.pluginManager.hasPlugin("org.jlleitschuh.gradle.ktlint")).isTrue()
     }
 
     @Test
-    @DisplayName("then kover gradle plugin is applied")
+    @DisplayName("then the kover gradle plugin is applied")
     fun `then kover gradle plugin is applied `() {
         assertThat(project.pluginManager.hasPlugin("org.jetbrains.kotlinx.kover")).isTrue()
     }

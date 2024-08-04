@@ -18,6 +18,5 @@ class KotlinQualityPlugin : Plugin<Project> {
             apply<KtlintPlugin>()
             apply<KoverGradlePlugin>()
         }
-
     }
 }
