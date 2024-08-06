@@ -21,7 +21,7 @@ plugins {
     id("com.adarshr.test-logger") version "4.0.0"
 
     // https://github.com/JLLeitschuh/ktlint-gradle
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
 
     // https://plugins.gradle.org/docs/publish-plugin
     id("com.gradle.plugin-publish") version "1.2.1"
